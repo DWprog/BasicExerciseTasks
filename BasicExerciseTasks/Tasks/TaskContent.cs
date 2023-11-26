@@ -240,6 +240,7 @@ namespace BasicExerciseTasks.Tasks
                 }
             }
         }
+
         public void NumberPositiveNegativeEqualZero()
         {
             SetTitle(
@@ -359,7 +360,76 @@ namespace BasicExerciseTasks.Tasks
             }
         }
 
+        public void TemperatureDegreeConversion()
+        {
+            SetTitle(
+                "Napisz program w C# do zamiany stopni Celcjusza na Farenheita\n" +
+                "i odwrotnie"
+                );
+            SetDescription("");
+            SetAuthor("Adam Kamizelich");
+            SetDate("07.02.2023");
 
+            SetTaskHeader("Program zamienia stopnie temperatury");
+            ShowHeader();
+
+            while (true)
+            {
+                WriteText("Konwersja Celsjusz --> Farenheit ");
+                WriteText("CF\n", ConsoleColor.Green);
+                WriteText("Konswrsja Farenheit --> Celsjusz ");
+                WriteText("FC\n", ConsoleColor.Green);
+
+                WriteText("Wybierz konwersję: ", ConsoleColor.DarkGreen);
+                var choice = Console.ReadLine();
+                choice = choice.ToLower();
+
+                if (choice == QuitButton)
+                {
+                    Console.WriteLine();
+                    break;
+                }
+
+                switch (choice)
+                {
+                    case "cf":
+                        WriteText("Podaj wartość temperatury w stopniach Celsjusza: ", ConsoleColor.DarkCyan);
+                        var inputC = Console.ReadLine();
+
+                        if (double.TryParse(inputC, out double degreeC) && degreeC >= -273.15)
+                        {
+                            WriteText($"{degreeC} stopni Celsjusza to ");
+                            WriteText($"{degreeC * 1.8 + 32:N2}", ConsoleColor.Yellow);
+                            WriteText($" stopni Farenheita\n\n");
+                        }
+                        else
+                        {
+                            WriteText("Zła wartość temperatury\n", ConsoleColor.Red);
+                        }
+                        break;
+
+                    case "fc":
+                        WriteText("Podaj wartość temperatury w stopniach Farenheita: ", ConsoleColor.DarkCyan);
+                        var inputF = Console.ReadLine();
+
+                        if (double.TryParse(inputF, out double degreeF) && degreeF >= -459.67)
+                        {
+                            WriteText($"{degreeF} stopni Farenhieta to ");
+                            WriteText($"{(degreeF - 32) / 1.8:N2}", ConsoleColor.Yellow);
+                            WriteText($" stopni Celsjusza\n\n");
+                        }
+                        else
+                        {
+                            WriteText("Zła wartość temperatury\n", ConsoleColor.Red);
+                        }
+                        break;
+
+                    default:
+                        WriteText("Niepoprawny wybór!\n", ConsoleColor.Red);
+                        continue;
+                }
+            }
+        }
 
     }
 }
