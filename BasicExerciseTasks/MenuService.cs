@@ -16,6 +16,8 @@ namespace BasicExerciseTasks
             WriteTask(5, "Sprawdzanie znaku liczby");
             WriteTask(6, "Zliczanie poszczególnych liter w tekście");
             WriteTask(7, "Zamiana stopni Celsjusza na Farenheita i odwrotnie");
+            WriteTask(8, "Zamiana iczby na nazwę dnia tygodnia");
+            WriteTask(9, "Zgadywanie liczby");
 
             Console.WriteLine();
             TaskBase.WriteText($"Aby zakończyć wbierz 0 (zero)\n\n", ConsoleColor.Black, ConsoleColor.Yellow);

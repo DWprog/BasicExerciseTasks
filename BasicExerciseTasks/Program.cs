@@ -51,17 +51,25 @@ namespace BasicExerciseTasks
                         task.TemperatureDegreeConversion();
                         break;
 
+                    case "8":
+                        task.NameOfDayOfWeek();
+                        break;
+
+                    case "9":
+                        task.GuessNumber();
+                        break;
+
 
                     case "0":
-                        TaskBase.WriteText("Thank you for using\n", ConsoleColor.DarkYellow);
-                        Console.WriteLine("To finish, press any key...");
+                        TaskBase.WriteText("Dziękujemy za użytkowanie\n", ConsoleColor.DarkYellow);
+                        Console.WriteLine("Aby zakończyć naciśnij dowolny przycisk...");
                         Console.ReadKey();
                         isClose = true;
                         break;
 
 
                     default:
-                        TaskBase.WriteText("Operation not allowed!\n\n", ConsoleColor.Red);
+                        TaskBase.WriteText("Operacja niedozwolona!\n\n", ConsoleColor.Red);
                         Console.ReadKey();
                         choice = "";
                         continue;

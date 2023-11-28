@@ -431,5 +431,115 @@ namespace BasicExerciseTasks.Tasks
             }
         }
 
+        public void NameOfDayOfWeek()
+        {
+            SetTitle(
+                "Napisz program w C#, który na podstawie numeru dnia tygodnia wydrukuje\n" +
+                "jego nazwę"
+                );
+            SetDescription("");
+            SetAuthor("Adam Kamizelich");
+            SetDate("07.02.2023");
+
+            SetTaskHeader("Program wyświetla nazwę dnia tygodnia na podstawie liczby");
+            ShowHeader();
+
+            string[] daysOfWeek = new string[]{"poniedziałek", "wtorek","środa","czwartek",
+            "piątek","sobota","niedziela"};
+
+            while (true)
+            {
+                WriteText("Podaj liczbę do wyświetlenia dnia tygodnia: ", ConsoleColor.DarkGreen);
+                var input = Console.ReadLine();
+
+                if (input.ToLower() == QuitButton)
+                {
+                    Console.WriteLine();
+                    break;
+                }
+
+                if (int.TryParse(input, out int number) && number > 0 && number <= 7)
+                {
+                    WriteText($"Liczba {number} to ");
+                    WriteText($"{daysOfWeek[number - 1]}\n\n", ConsoleColor.Green);
+                }
+
+                else
+                {
+                    WriteText("Błędna wartość!\n", ConsoleColor.Red);
+                }
+            }
+        }
+
+        public void GuessNumber()
+        {
+            SetTitle(
+                "Napisz program w C# \"Gra w zgadywanie liczby\" (if else, pętle)"
+                );
+            SetDescription(
+                "Twoim zadaniem jest napisać prostą grę, w której komputer losuje liczbę\n" +
+                "z przedziału od 1 do 100, a użytkownik ma za zadanie zgadnąć tę liczbę.\n" +
+                "Komputer powinien udzielać podpowiedzi, czy podana liczba jest za duża,\n" +
+                "za mała czy właściwa."
+                );
+            SetAuthor("Zuzia");
+            SetDate("12.05.2023");
+
+            SetTaskHeader("Gra w zgadywanie liczby");
+            ShowHeader();
+
+            Random random = new Random();
+
+            while (true)
+            {
+                WriteText("Zgadnij liczbę z zakresu od 1 do 100\n", ConsoleColor.DarkYellow);
+                int unknown = random.Next(1, 101);
+                int count = 0;
+                bool isNewGame = true;
+
+                while (isNewGame)
+                {
+                    WriteText($"Podaj swoją próbę: ", ConsoleColor.DarkCyan);
+                    var input = Console.ReadLine();
+
+                    if (input.ToLower() == QuitButton)
+                    {
+                        Console.WriteLine();
+                        return;
+                    }
+
+                    if (int.TryParse(input, out int number) && number >= 1 && number <= 100)
+                    {
+                        count++;
+                        if (number > unknown)
+                        {
+                            WriteText("Za duża!\n", ConsoleColor.Green);
+                            continue;
+                        }
+                        else if (number < unknown)
+                        {
+                            WriteText("Za mała!\n", ConsoleColor.Red);
+                            continue;
+                        }
+                        else
+                        {
+                            WriteText($"Gratulacje! Zgadłeś liczbę {unknown}. Liczba prób: ");
+                            WriteText($"{count}\n\n",ConsoleColor.Magenta);
+                            isNewGame = false;
+                            Console.ReadKey();
+                        }
+                    }
+
+                    else
+                    {
+                        WriteText("Błędna wartość!\n", ConsoleColor.Red);
+                    }
+
+                }
+            }
+        }
+
+
+
     }
 }
