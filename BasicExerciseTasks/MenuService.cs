@@ -18,7 +18,8 @@ namespace BasicExerciseTasks
             WriteTask(7, "Zamiana stopni Celsjusza na Farenheita i odwrotnie");
             WriteTask(8, "Zamiana iczby na nazwę dnia tygodnia");
             WriteTask(9, "Zgadywanie liczby");
-
+            WriteTask(10, "Usuwanie duplikatów z tablicy liczb");
+            
             Console.WriteLine();
             TaskBase.WriteText($"Aby zakończyć wbierz 0 (zero)\n\n", ConsoleColor.Black, ConsoleColor.Yellow);
         }

@@ -103,7 +103,7 @@ namespace BasicExerciseTasks.Tasks
 
                 else
                 {
-                    WriteText("To nie jest liczba naturalna!", ConsoleColor.Red);
+                    WriteText("To nie jest liczba naturalna!\n", ConsoleColor.Red);
                 }
             }
         }
@@ -524,7 +524,7 @@ namespace BasicExerciseTasks.Tasks
                         else
                         {
                             WriteText($"Gratulacje! Zgadłeś liczbę {unknown}. Liczba prób: ");
-                            WriteText($"{count}\n\n",ConsoleColor.Magenta);
+                            WriteText($"{count}\n\n", ConsoleColor.Magenta);
                             isNewGame = false;
                             Console.ReadKey();
                         }
@@ -539,7 +539,78 @@ namespace BasicExerciseTasks.Tasks
             }
         }
 
+        public void RemoveDuplicatesFromArray()
+        {
+            SetTitle(
+                "Napisz program w języku C#, który usunie wszystkie zduplikowane liczby\n" +
+                "z podanej tablicy"
+                );
+            SetDescription("");
+            SetAuthor("Adam Kamizelich");
+            SetDate("04.03.2023");
 
+            SetTaskHeader("Program usuwa duplikaty z podanej tablicy liczb");
+            ShowHeader();
 
+            while (true)
+            {
+                WriteText("Podaj wielkość tablicy: ", ConsoleColor.DarkYellow);
+                var sizeOfArray = Console.ReadLine();
+
+                if (sizeOfArray.ToLower() == QuitButton)
+                {
+                    Console.WriteLine();
+                    return;
+                }
+
+                if (int.TryParse(sizeOfArray, out int size) && size > 0)
+                {
+                    double[] array = new double[size];
+                    int indexOfArray = 0;
+
+                    while (true)
+                    {
+                        WriteText($"Podaj liczbę nr {indexOfArray + 1} z {size}: ", ConsoleColor.DarkCyan);
+                        var input = Console.ReadLine();
+
+                        if (input.ToLower() == QuitButton)
+                        {
+                            Console.WriteLine();
+                            return;
+                        }
+
+                        if (double.TryParse(input, out double number))
+                        {
+                            array[indexOfArray] = number;
+                            indexOfArray++;
+
+                            if (indexOfArray >= size)
+                            {
+                                double[] uniques = TaskFunctions.ArrayWithoutDuplicate(array);
+
+                                WriteText("Unikatowe liczby:\n");
+                                foreach (var unique in uniques)
+                                {
+                                    WriteText($"{unique}  ", ConsoleColor.Magenta);
+                                }
+                                Console.WriteLine("\n");
+                                break;
+                            }
+                        }
+
+                        else
+                        {
+                            WriteText("To nie jest liczba!\n", ConsoleColor.Red);
+                        }
+                    }
+                }
+
+                else
+                {
+                    WriteText("Wielkość tablicy musi być liczbą naturalną!\n", ConsoleColor.Red);
+                    continue;
+                }
+            }
+        }
     }
 }

@@ -59,8 +59,13 @@ namespace BasicExerciseTasks
                         task.GuessNumber();
                         break;
 
+                    case "10":
+                        task.RemoveDuplicatesFromArray();
+                        break;
+
 
                     case "0":
+                        Console.Clear();
                         TaskBase.WriteText("Dziękujemy za użytkowanie\n", ConsoleColor.DarkYellow);
                         Console.WriteLine("Aby zakończyć naciśnij dowolny przycisk...");
                         Console.ReadKey();
@@ -69,6 +74,7 @@ namespace BasicExerciseTasks
 
 
                     default:
+                        Console.Clear();
                         TaskBase.WriteText("Operacja niedozwolona!\n\n", ConsoleColor.Red);
                         Console.ReadKey();
                         choice = "";
